@@ -13,6 +13,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
+    "test-with-coverage": "tsdx test --coverage && cat ./coverage/lcov.info | codacy-coverage",
     "lint": "tsdx lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -58,6 +59,7 @@
     "@types/react-router-dom": "^5.1.0",
     "@types/storybook__react": "^4.0.2",
     "babel-loader": "^8.0.6",
+    "codacy-coverage": "^3.4.0",
     "eslint-config-react-app": "5.0.1",
     "husky": "^3.0.8",
     "react": "^16.10.2",
@@ -76,6 +78,8 @@
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/fileMock.js",
+      "@src": "<rootDir>/src/index.ts",
+      "@src/(.*)": "<rootDir>/src/$1",
       "@test/(.*)": "<rootDir>/test/$1"
     },
     "testEnvironment": "jsdom",

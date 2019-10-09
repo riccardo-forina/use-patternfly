@@ -9,7 +9,7 @@ import spacingStyles from '@patternfly/react-styles/css/utilities/Spacing/spacin
 import { css } from '@patternfly/react-styles';
 import { BellIcon, CogIcon } from '@patternfly/react-icons';
 
-import { AppLayout } from './AppLayout';
+import { AppLayout } from '../src/AppLayout';
 import {
   PageSection,
   Toolbar,
@@ -23,7 +23,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from '@patternfly/react-core';
-import { useBreadcrumb } from './index';
+import { useBreadcrumb } from '../src';
 
 const stories = storiesOf('Utils', module);
 stories.addDecorator(withKnobs);

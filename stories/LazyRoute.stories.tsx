@@ -2,7 +2,7 @@ import { Button } from '@patternfly/react-core';
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { MemoryRouter } from 'react-router';
-import { LazyRoute } from './LazyRoute';
+import { LazyRoute } from '../src/LazyRoute';
 
 const stories = storiesOf('Utils', module);
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@test/setup';
-import { useDocumentTitle } from '.';
+import { useDocumentTitle } from '@src';
 
 const SamplePage = () => {
   useDocumentTitle('This is a test title');

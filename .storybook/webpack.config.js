@@ -4,7 +4,10 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 module.exports = ({ config }) => {
   config.module.rules.push({
     test: /\.tsx?$/,
-    include: path.resolve(__dirname, '../src'),
+    include: [
+      path.resolve(__dirname, '../src'),
+      path.resolve(__dirname, '../stories'),
+    ],
     use: [
       {
         loader: 'ts-loader',

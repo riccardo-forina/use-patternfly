@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import { waitForElement } from '@testing-library/dom';
 import { render, fireEvent } from '@test/setup';
-import { useA11yRouteContainer } from '.';
+import { useA11yRouteContainer } from '@src';
 
 const SamplePage = () => {
   const a11yContainerProps = useA11yRouteContainer();

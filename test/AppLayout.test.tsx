@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@test/setup';
-import { AppLayout, IAppLayoutProps } from '.';
+import { AppLayout, IAppLayoutProps } from '@src';
 
 function makeAppLayout(
   props: Partial<React.PropsWithChildren<IAppLayoutProps>> = {}
