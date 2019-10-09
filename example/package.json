@@ -11,6 +11,7 @@
     "react-app-polyfill": "^1.0.4"
   },
   "alias": {
+    "use-patternfly": "../.",
     "react": "../node_modules/react",
     "react-dom": "../node_modules/react-dom/profiling",
     "react-router": "../node_modules/react-router",

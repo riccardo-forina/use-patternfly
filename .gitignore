@@ -8,3 +8,5 @@ coverage
 .rts2_cache_umd
 dist
 storybook-static
+# Local Netlify folder
+.netlify

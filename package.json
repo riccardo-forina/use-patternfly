@@ -16,7 +16,8 @@
     "test-with-coverage": "tsdx test --coverage --coverageReporters=text-lcov | coveralls",
     "lint": "tsdx lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-netlify": "yarn run build && cd example && yarn && yarn run build --no-minify"
   },
   "peerDependencies": {
     "@patternfly/react-core": "^3.77.2",
