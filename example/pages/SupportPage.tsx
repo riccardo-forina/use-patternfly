@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useA11yRouteContainer, useDocumentTitle } from '../../.';
+import { useA11yRouteContainer, useDocumentTitle } from 'use-patternfly';
 import { Support } from '../components';
 
 export default function SupportPage() {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
 import { Link } from 'react-router-dom';
-import { useA11yRouteContainer, useBreadcrumb, useDocumentTitle } from '../../.';
+import { useA11yRouteContainer, useBreadcrumb, useDocumentTitle } from 'use-patternfly';
 import { DashboardSimple } from '../components';
 
 const DashboardPageBreadcrumbs = (

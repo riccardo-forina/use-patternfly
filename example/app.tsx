@@ -3,7 +3,7 @@ import '@patternfly/react-core/dist/styles/base.css';
 import * as React from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
-import { AppLayout, LazyRoute, SwitchWith404 } from '../.';
+import { AppLayout, LazyRoute, SwitchWith404 } from 'use-patternfly';
 import './app.css';
 
 export const App = () => {

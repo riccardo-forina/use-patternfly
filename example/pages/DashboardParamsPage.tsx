@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useParams } from 'react-router';
 import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
 import { Link } from 'react-router-dom';
-import { useA11yRouteContainer, useBreadcrumb, useDocumentTitle } from '../../.';
+import { useA11yRouteContainer, useBreadcrumb, useDocumentTitle } from 'use-patternfly';
 import { DashboardParams } from '../components';
 
 export const DashboardPageBreadcrumbs = (

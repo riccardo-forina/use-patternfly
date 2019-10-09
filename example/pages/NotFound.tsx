@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Alert, PageSection } from '@patternfly/react-core';
-import { useA11yRouteContainer, useDocumentTitle } from '../../.';
+import { useA11yRouteContainer, useDocumentTitle } from 'use-patternfly';
 
 const NotFound: React.FunctionComponent = () => {
   const a11yContainerProps = useA11yRouteContainer();
