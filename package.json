@@ -13,7 +13,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "test-with-coverage": "tsdx test --coverage && cat ./coverage/lcov.info | codacy-coverage",
+    "test-with-coverage": "tsdx test --coverage --coverageReporters=text-lcov | coveralls",
     "lint": "tsdx lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -60,6 +60,7 @@
     "@types/storybook__react": "^4.0.2",
     "babel-loader": "^8.0.6",
     "codacy-coverage": "^3.4.0",
+    "coveralls": "^3.0.6",
     "eslint-config-react-app": "5.0.1",
     "husky": "^3.0.8",
     "react": "^16.10.2",
@@ -87,5 +88,7 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "remove": "^0.1.5"
+  }
 }
