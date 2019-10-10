@@ -70,7 +70,7 @@ export const StarWarsPeople: React.FunctionComponent<IStarWarsPeopleProps> = ({
             <a href={'https://swapi.co'}>SWApi</a> as a sample backend service
             to show the list of characters in the Star Wars universe.
           </Text>
-          <Text><ExampleLink filename={'StarWarsPeople.tsx'}>Source for this example</ExampleLink>.</Text>
+          <Text><ExampleLink filename={'AsyncDataList.tsx'}>Source for this example</ExampleLink>.</Text>
         </TextContent>
       </PageSection>
       <PageSection {...props}>
