@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useA11yRouteContainer, useDocumentTitle } from 'use-patternfly';
-import { Support } from '../components';
+import { Installation } from '../components';
 
-export default function SupportPage() {
+export default function InstallationPage() {
   const a11yContainerProps = useA11yRouteContainer();
-  useDocumentTitle('Support');
+  useDocumentTitle('Installation');
   return (
-    <Support {...a11yContainerProps} />
+    <Installation {...a11yContainerProps} />
   );
 }

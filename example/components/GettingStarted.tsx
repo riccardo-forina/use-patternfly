@@ -2,7 +2,7 @@ import * as React from 'react';
 import { PageSection, Title, EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody, Button, EmptyStateSecondaryActions } from '@patternfly/react-core';
 import { CubesIcon } from '@patternfly/react-icons';
 
-export const Support: React.FunctionComponent<any> = ({ children, ...props }) => {
+export const GettingStarted: React.FunctionComponent<any> = ({ children, ...props }) => {
   return (
     <PageSection {...props}>
       <EmptyState variant={EmptyStateVariant.full}>

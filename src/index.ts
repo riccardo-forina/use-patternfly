@@ -3,6 +3,7 @@ export * from './AppNavExpandable';
 export * from './AppNavGroup';
 export * from './AppNavItem';
 export * from './LazyRoute';
+export * from './Loading';
 export * from './NotFound';
 export * from './SwitchWith404';
 export * from './useA11yRoute';
