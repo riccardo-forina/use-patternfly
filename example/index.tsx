@@ -4,12 +4,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 import { App } from './app';
 
-ReactDOM.render((
-    <Router>
-      <LastLocationProvider>
-        <App />
-      </LastLocationProvider>
-    </Router>
-  ),
-  document.getElementById("root") as HTMLElement
+ReactDOM.render(
+  <Router>
+    <LastLocationProvider>
+      <App />
+    </LastLocationProvider>
+  </Router>,
+  document.getElementById('root') as HTMLElement
 );

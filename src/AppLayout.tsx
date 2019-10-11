@@ -32,6 +32,7 @@ export interface IAppLayoutProps
   navGroupsStyle?: 'grouped' | 'expandable';
   startWithOpenNav?: boolean;
   theme?: 'dark' | 'light';
+  mainContainerId?: string;
 }
 
 export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
@@ -44,6 +45,7 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
   avatar,
   startWithOpenNav = true,
   theme = 'dark',
+  mainContainerId = 'main-container',
   children,
 }) => {
   const [isNavOpen, setIsNavOpen] = React.useState(startWithOpenNav);
@@ -155,7 +157,7 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
   return (
     <AppLayoutContext.Provider value={{ setBreadcrumb: handleSetBreadcrumb }}>
       <Page
-        mainContainerId="primary-app-container"
+        mainContainerId={mainContainerId}
         header={Header}
         sidebar={Sidebar}
         breadcrumb={breadcrumb}

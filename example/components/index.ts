@@ -1,3 +1,5 @@
+export * from './AsyncDataListGraphQLHeader';
+export * from './AsyncDataListRestHeader';
 export * from './ExampleLink';
 export * from './GettingStarted';
 export * from './Installation';

@@ -12,7 +12,7 @@ const navItems = [
   {
     title: 'Overview',
     to: '/',
-    exact: true
+    exact: true,
   },
   {
     title: 'Getting Started',
@@ -20,7 +20,7 @@ const navItems = [
     items: [
       { to: '/getting-started/installation', title: 'Installation' },
       { to: '/getting-started/usage', title: 'Usage' },
-    ]
+    ],
   },
   {
     title: 'API',
@@ -38,11 +38,13 @@ const navItems = [
       { to: '/api/useBreadcrumb', title: 'useBreadcrumb' },
       { to: '/api/useDocumentTitle', title: 'useDocumentTitle' },
     ],
-  }, {
+  },
+  {
     title: 'Examples',
     to: '/examples',
     items: [
-      { to: '/examples/async-data-list', title: 'Async Data List' },
+      { to: '/examples/async-data-list-rest', title: 'Async Data List (REST)' },
+      { to: '/examples/async-data-list-graphql', title: 'Async Data List (Graphql)' },
     ],
   },
 ];
@@ -50,13 +52,17 @@ const navItems = [
 const getOverviewPage = () => import('./pages/OverviewPage');
 const getInstallationPage = () => import('./pages/InstallationPage');
 const getUsagePage = () => import('./pages/UsagePage');
-const getAsyncDataList = () => import('./pages/AsyncDataList');
+const getAsyncDataListRest = () => import('./pages/AsyncDataListRestPage');
+const getAsyncDataListGraphQL = () => import('./pages/AsyncDataListGraphQLPage');
 
 export const App = () => {
   const history = useHistory();
-  const logoProps = React.useMemo(() => ({
-    onClick: () => history.push('/')
-  }), [history]);
+  const logoProps = React.useMemo(
+    () => ({
+      onClick: () => history.push('/'),
+    }),
+    [history]
+  );
   return (
     <AppLayout
       logo={Logo}
@@ -66,32 +72,25 @@ export const App = () => {
       navGroupsStyle={'expandable'}
     >
       <SwitchWith404>
-        <LazyRoute
-          path='/'
-          exact={true}
-          getComponent={getOverviewPage}
-        />
+        <LazyRoute path="/" exact={true} getComponent={getOverviewPage} />
         <Redirect
           path={'/getting-started'}
           to={'/getting-started/installation'}
           exact={true}
         />
         <LazyRoute
-          path='/getting-started/installation'
+          path="/getting-started/installation"
           getComponent={getInstallationPage}
         />
+        <LazyRoute path="/getting-started/usage" getComponent={getUsagePage} />
+        <Redirect path="/api" to={'/api/AppLayout'} exact={true} />
         <LazyRoute
-          path='/getting-started/usage'
-          getComponent={getUsagePage}
-        />
-        <Redirect
-          path='/api'
-          to={'/api/AppLayout'}
-          exact={true}
+          path="/examples/async-data-list-rest/:page?"
+          getComponent={getAsyncDataListRest}
         />
         <LazyRoute
-          path='/examples/async-data-list/:page?'
-          getComponent={getAsyncDataList}
+          path="/examples/async-data-list-graphql/:page?"
+          getComponent={getAsyncDataListGraphQL}
         />
       </SwitchWith404>
     </AppLayout>

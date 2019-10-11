@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { useA11yRouteContainer, useDocumentTitle } from 'use-patternfly';
+import { useA11yRouteChange, useDocumentTitle } from 'use-patternfly';
 import { Installation } from '../components';
 
 export default function InstallationPage() {
-  const a11yContainerProps = useA11yRouteContainer();
+  useA11yRouteChange();
   useDocumentTitle('Installation');
-  return (
-    <Installation {...a11yContainerProps} />
-  );
+  return <Installation />;
 }

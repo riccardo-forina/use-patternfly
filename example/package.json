@@ -8,6 +8,9 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.2",
+    "apollo-boost": "^0.4.4",
+    "graphql": "^14.5.8",
     "react-app-polyfill": "^1.0.4",
     "react-async": "^9.0.0"
   },
@@ -18,7 +21,8 @@
     "react-router": "../node_modules/react-router",
     "react-router-dom": "../node_modules/react-router-dom",
     "react-router-last-location": "../node_modules/react-router-last-location",
-    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
+    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling",
+    "date-fns": "../node_modules/date-fns"
   },
   "devDependencies": {
     "@types/react": "^16.8.15",

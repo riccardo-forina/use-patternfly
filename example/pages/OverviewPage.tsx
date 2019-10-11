@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { useA11yRouteContainer, useDocumentTitle } from 'use-patternfly';
+import { useA11yRouteChange, useDocumentTitle } from 'use-patternfly';
 import { Overview } from '../components';
 
 export default function OverviewPage() {
-  const a11yContainerProps = useA11yRouteContainer();
+  useA11yRouteChange();
   useDocumentTitle('Overview');
-  return (
-    <Overview {...a11yContainerProps} />
-  );
+  return <Overview />;
 }
