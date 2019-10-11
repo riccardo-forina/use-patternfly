@@ -30,8 +30,6 @@ yarn # to install dependencies
 yarn start
 ```
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, [we use Parcel's aliasing](https://github.com/palmerhq/tsdx/pull/88/files).
-
 To do a one-off build, use `yarn build`.
 
 To run tests, use `yarn test`.

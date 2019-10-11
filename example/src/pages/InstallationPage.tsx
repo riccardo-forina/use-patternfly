@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useA11yRouteChange, useDocumentTitle } from 'use-patternfly';
 import { Installation } from '../components';
 

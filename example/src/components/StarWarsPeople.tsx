@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   DataList,
   DataListCell,
@@ -31,7 +31,7 @@ export interface IStarWarsPerson {
   films: number;
   vehicles: number;
   starships: number;
-  updatedAt: Date;
+  updatedAt: string;
 }
 
 export interface IStarWarsPeopleProps {
@@ -51,14 +51,14 @@ export const StarWarsPeople: React.FunctionComponent<IStarWarsPeopleProps> = ({
   total,
   loading,
   onPageChange,
-  onPerPageChange
+  onPerPageChange,
 }) => {
   const paginationProps = {
     itemCount: total,
     page: page,
     perPage: perPage,
-    onSetPage: (_, page) => onPageChange(page),
-    onPerPageSelect: (_, page) => onPerPageChange(page)
+    onSetPage: (_: any, page: number) => onPageChange(page),
+    onPerPageSelect: (_: any, page: number) => onPerPageChange(page),
   };
   return (
     <PageSection>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Alert, PageSection } from '@patternfly/react-core';
 import { useA11yRouteChange, useDocumentTitle } from 'use-patternfly';

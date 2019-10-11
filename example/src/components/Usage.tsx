@@ -7,7 +7,7 @@ import {
   Flex,
   Button,
 } from '@patternfly/react-core';
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Usage: React.FunctionComponent = ({ children }) => {

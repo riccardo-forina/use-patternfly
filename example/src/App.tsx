@@ -1,10 +1,10 @@
 import 'react-app-polyfill/ie11';
 import '@patternfly/react-core/dist/styles/base.css';
 import { Brand } from '@patternfly/react-core';
-import * as React from 'react';
+import React from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { AppLayout, LazyRoute, SwitchWith404 } from 'use-patternfly';
-import './app.css';
+import './App.css';
 import logo from './use-patternfly.png';
 
 const Logo = <Brand src={logo} alt={'use-patternfly logo'} />;
@@ -44,7 +44,10 @@ const navItems = [
     to: '/examples',
     items: [
       { to: '/examples/async-data-list-rest', title: 'Async Data List (REST)' },
-      { to: '/examples/async-data-list-graphql', title: 'Async Data List (Graphql)' },
+      {
+        to: '/examples/async-data-list-graphql',
+        title: 'Async Data List (Graphql)',
+      },
     ],
   },
 ];
@@ -53,7 +56,8 @@ const getOverviewPage = () => import('./pages/OverviewPage');
 const getInstallationPage = () => import('./pages/InstallationPage');
 const getUsagePage = () => import('./pages/UsagePage');
 const getAsyncDataListRest = () => import('./pages/AsyncDataListRestPage');
-const getAsyncDataListGraphQL = () => import('./pages/AsyncDataListGraphQLPage');
+const getAsyncDataListGraphQL = () =>
+  import('./pages/AsyncDataListGraphQLPage');
 
 export const App = () => {
   const history = useHistory();

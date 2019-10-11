@@ -1,36 +1,66 @@
-import * as React from 'react';
+import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import ApolloClient, { gql } from 'apollo-boost';
 import { ApolloProvider, useQuery } from '@apollo/react-hooks';
 import { useA11yRouteChange, useDocumentTitle } from 'use-patternfly';
-import { AsyncDataListGraphQLHeader, IStarWarsPerson, StarWarsPeople } from '../components';
+import {
+  AsyncDataListGraphQLHeader,
+  IStarWarsPerson,
+  StarWarsPeople,
+} from '../components';
 
 const client = new ApolloClient({
   uri: 'https://swapi.graph.cool/',
 });
 
 const SW_PEOPLE = gql`
-query People($first: Int, $skip: Int) {
-  allPersons(first: $first, skip: $skip) {
-    name
-    gender
-    mass
-    _filmsMeta {
+  query People($first: Int, $skip: Int) {
+    allPersons(first: $first, skip: $skip) {
+      name
+      gender
+      mass
+      _filmsMeta {
+        count
+      }
+      _vehiclesMeta {
+        count
+      }
+      _starshipsMeta {
+        count
+      }
+      updatedAt
+    }
+    _allPersonsMeta {
       count
     }
-    _vehiclesMeta {
-      count
-    }
-    _starshipsMeta {
-      count
-    }
-    updatedAt
   }
-  _allPersonsMeta {
-    count
-  }
-}
 `;
+
+interface IPeopleData {
+  allPersons: Array<{
+    name: string;
+    gender: string;
+    mass: string;
+    _filmsMeta: {
+      count: number;
+    };
+    _vehiclesMeta: {
+      count: number;
+    };
+    _starshipsMeta: {
+      count: number;
+    };
+    updatedAt: string;
+  }>;
+  _allPersonsMeta: {
+    count: number;
+  };
+}
+
+interface IPeopleVars {
+  first: number;
+  skip: number;
+}
 
 interface IStarWarsPeopleResponse {
   count: number;
@@ -48,16 +78,19 @@ function AsyncDataListGraphQL() {
   const page = parseInt(searchParams.get('page') || '', 10) || 0;
   const perPage = parseInt(searchParams.get('perPage') || '', 10) || 10;
 
-  const { loading, data } = useQuery(SW_PEOPLE, {
+  const { loading, data } = useQuery<IPeopleData, IPeopleVars>(SW_PEOPLE, {
     variables: {
       first: perPage,
-      skip: page * perPage
-    }
+      skip: page * perPage,
+    },
   });
 
-  const setSearchParam = React.useCallback((name: string, value: string) => {
-    searchParams.set(name, value.toString());
-  }, [searchParams]);
+  const setSearchParam = React.useCallback(
+    (name: string, value: string) => {
+      searchParams.set(name, value.toString());
+    },
+    [searchParams]
+  );
 
   const handlePageChange = React.useCallback(
     (newPage: number) => {
@@ -66,7 +99,7 @@ function AsyncDataListGraphQL() {
         search: searchParams.toString(),
       });
     },
-    [setSearchParam, history]
+    [setSearchParam, history, searchParams]
   );
 
   const handlePerPageChange = React.useCallback(
@@ -77,10 +110,13 @@ function AsyncDataListGraphQL() {
         search: searchParams.toString(),
       });
     },
-    [setSearchParam, history]
+    [setSearchParam, history, searchParams]
   );
 
-  const { allPersons, _allPersonsMeta: { count: total } } = data || { allPersons: [], _allPersonsMeta: { count: 0 } };
+  const {
+    allPersons = [],
+    _allPersonsMeta: { count: total },
+  } = data || { _allPersonsMeta: { count: 0 } };
   const people = allPersons.map(person => ({
     name: person.name,
     mass: person.mass,

@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "use-patternfly": {
+      "signature": "3e2d58a563eff85309c34eff142d9deb",
+      "file": true
+    }
+  }
+}

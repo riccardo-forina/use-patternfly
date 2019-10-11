@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { useFetch } from 'react-async';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useA11yRouteChange, useDocumentTitle } from 'use-patternfly';
-import { AsyncDataListRestHeader, IStarWarsPerson, StarWarsPeople } from '../components';
+import { AsyncDataListRestHeader, StarWarsPeople } from '../components';
 
 export interface IStarWarsRestPerson {
   name: string;
@@ -18,8 +18,8 @@ export interface IStarWarsRestPerson {
   species: string[];
   vehicles: string[];
   starships: string[];
-  created: Date;
-  edited: Date;
+  created: string;
+  edited: string;
   url: string;
 }
 
@@ -74,7 +74,7 @@ export default function AsyncDataListRestPage() {
         people={people}
         total={total}
         onPageChange={handlePageChange}
-        onPerPageChange={() => alert('Sorry, SWApi doesn\'t support this')}
+        onPerPageChange={() => alert("Sorry, SWApi doesn't support this")}
         loading={isPending}
       />
     </>
