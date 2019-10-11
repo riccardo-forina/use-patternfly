@@ -7,6 +7,10 @@ export const SwitchWith404: React.FunctionComponent<SwitchProps> = ({
   ...props
 }) => {
   const match = useRouteMatch();
+  const defaultMatch = React.useMemo(
+    () => match && <Route path={match.path} exact={true} />,
+    [match]
+  );
   return (
     <Switch {...props}>
       {children}
@@ -14,7 +18,7 @@ export const SwitchWith404: React.FunctionComponent<SwitchProps> = ({
        * Default route that matches the parent route, to avoid showing a 404
        * for "junction" pages . See the "Dashboard" example.
        */}
-      {match && <Route path={match.path} exact={true} />}
+      {defaultMatch}
       <Route>
         <NotFound />
       </Route>

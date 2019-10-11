@@ -53,6 +53,7 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
     React.ReactNode | undefined
   >();
   const previousBreadcrumb = React.useRef<React.ReactNode | null>();
+
   const handleSetBreadcrumb = React.useCallback(
     (newBreadcrumb: React.ReactNode) => {
       if (previousBreadcrumb.current !== newBreadcrumb) {
@@ -63,12 +64,14 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
     [setBreadcrumb, previousBreadcrumb]
   );
 
-  const onNavToggleMobile = () => {
+  const onNavToggleMobile = React.useCallback(() => {
     setIsNavOpenMobile(!isNavOpenMobile);
-  };
-  const onNavToggle = () => {
+  }, [setIsNavOpenMobile, isNavOpenMobile]);
+
+  const onNavToggle = React.useCallback(() => {
     setIsNavOpen(!isNavOpen);
-  };
+  }, [setIsNavOpen, isNavOpen]);
+
   const onPageResize = (props: { mobileView: boolean; windowSize: number }) => {
     setIsMobileView(props.mobileView);
   };
@@ -80,57 +83,73 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
   const isVertical = navVariant === 'vertical';
   const variant = isVertical ? NavVariants.default : NavVariants.horizontal;
 
-  const Navigation =
-    navItems.length > 0 ? (
-      <Nav id="nav-primary-simple" theme={theme}>
-        <NavList id="nav-list-simple" variant={variant}>
-          {navItems.map((navItem, idx) => {
-            if (navItem && navItem.hasOwnProperty('items') && isVertical) {
-              return navGroupsStyle === 'expandable' ? (
-                <AppNavExpandable
-                  {...(navItem as IAppNavExpandableProps)}
-                  key={idx}
-                />
-              ) : (
-                <AppNavGroup {...(navItem as IAppNavGroupProps)} key={idx} />
-              );
-            } else {
-              return (
-                <AppNavItem {...(navItem as IAppNavItemProps)} key={idx} />
-              );
-            }
-          })}
-        </NavList>
-      </Nav>
-    ) : null;
-
-  const Header = (
-    <PageHeader
-      logo={logo}
-      logoProps={logoProps}
-      avatar={avatar}
-      toolbar={toolbar}
-      showNavToggle={isVertical}
-      isNavOpen={isVertical ? isNavOpen : undefined}
-      onNavToggle={isMobileView ? onNavToggleMobile : onNavToggle}
-      topNav={isVertical ? undefined : Navigation}
-    />
+  const Navigation = React.useMemo(
+    () =>
+      navItems.length > 0 ? (
+        <Nav id="nav-primary-simple" theme={theme}>
+          <NavList id="nav-list-simple" variant={variant}>
+            {navItems.map((navItem, idx) => {
+              if (navItem && navItem.hasOwnProperty('items') && isVertical) {
+                return navGroupsStyle === 'expandable' ? (
+                  <AppNavExpandable
+                    {...(navItem as IAppNavExpandableProps)}
+                    key={idx}
+                  />
+                ) : (
+                  <AppNavGroup {...(navItem as IAppNavGroupProps)} key={idx} />
+                );
+              } else {
+                return (
+                  <AppNavItem {...(navItem as IAppNavItemProps)} key={idx} />
+                );
+              }
+            })}
+          </NavList>
+        </Nav>
+      ) : null,
+    [isVertical, navGroupsStyle, navItems, theme, variant]
   );
 
-  const Sidebar =
-    navVariant === 'vertical' ? (
-      <PageSidebar
-        nav={Navigation}
-        isNavOpen={isMobileView ? isNavOpenMobile : isNavOpen}
-        theme={theme}
-        data-testid="app-sidebar"
+  const Header = React.useMemo(
+    () => (
+      <PageHeader
+        logo={logo}
+        logoProps={logoProps}
+        avatar={avatar}
+        toolbar={toolbar}
+        showNavToggle={isVertical}
+        isNavOpen={isVertical ? isNavOpen : undefined}
+        onNavToggle={isMobileView ? onNavToggleMobile : onNavToggle}
+        topNav={isVertical ? undefined : Navigation}
       />
-    ) : (
-      undefined
-    );
+    ),
+    [
+      logo,
+      logoProps,
+      avatar,
+      toolbar,
+      isVertical,
+      isNavOpen,
+      isMobileView,
+      onNavToggle,
+      onNavToggleMobile,
+      Navigation,
+    ]
+  );
 
-  const PageSkipToContent = (
-    <SkipToContent href="#primary-app-container">Skip to Content</SkipToContent>
+  const Sidebar = React.useMemo(
+    () =>
+      navVariant === 'vertical' ? (
+        <PageSidebar
+          nav={Navigation}
+          isNavOpen={isMobileView ? isNavOpenMobile : isNavOpen}
+          theme={theme}
+          data-testid="app-sidebar"
+        />
+      ) : (
+        undefined
+      ),
+    [navVariant, Navigation, isMobileView, isNavOpenMobile, isNavOpen, theme]
   );
 
   return (
@@ -141,7 +160,11 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
         sidebar={Sidebar}
         breadcrumb={breadcrumb}
         onPageResize={onPageResize}
-        skipToContent={PageSkipToContent}
+        skipToContent={
+          <SkipToContent href="#primary-app-container">
+            Skip to Content
+          </SkipToContent>
+        }
       >
         {children}
       </Page>
