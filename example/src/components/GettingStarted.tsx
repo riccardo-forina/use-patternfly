@@ -1,18 +1,28 @@
-import * as React from 'react';
-import { PageSection, Title, EmptyState, EmptyStateVariant, EmptyStateIcon, EmptyStateBody, Button, EmptyStateSecondaryActions } from '@patternfly/react-core';
+import React from 'react';
+import {
+  PageSection,
+  Title,
+  EmptyState,
+  EmptyStateVariant,
+  EmptyStateIcon,
+  EmptyStateBody,
+  Button,
+  EmptyStateSecondaryActions,
+} from '@patternfly/react-core';
 import { CubesIcon } from '@patternfly/react-icons';
 
-export const GettingStarted: React.FunctionComponent<any> = ({ children, ...props }) => {
+export const GettingStarted: React.FunctionComponent = ({ children }) => {
   return (
-    <PageSection {...props}>
+    <PageSection>
       <EmptyState variant={EmptyStateVariant.full}>
         <EmptyStateIcon icon={CubesIcon} />
         <Title headingLevel="h5" size="lg">
           Empty State (Stub Support Module)
         </Title>
         <EmptyStateBody>
-          This represents an the empty state pattern in Patternfly 4. Hopefully it's simple enough to use but flexible
-          enough to meet a variety of needs.
+          This represents an the empty state pattern in Patternfly 4. Hopefully
+          it's simple enough to use but flexible enough to meet a variety of
+          needs.
         </EmptyStateBody>
         <Button variant="primary">Primary Action</Button>
         <EmptyStateSecondaryActions>
@@ -26,4 +36,4 @@ export const GettingStarted: React.FunctionComponent<any> = ({ children, ...prop
       </EmptyState>
     </PageSection>
   );
-}
+};

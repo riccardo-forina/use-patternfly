@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useRouteMatch } from 'react-router';
 import { LastLocationType, useLastLocation } from 'react-router-last-location';
 
 export function accessibleRouteChangeHandler(id: string, timeout = 50) {
@@ -11,18 +10,12 @@ export function accessibleRouteChangeHandler(id: string, timeout = 50) {
   }, timeout);
 }
 
-export const useA11yRouteContainerId = () => {
-  const { path } = useRouteMatch()!;
-  return `route-content-${path}`;
-};
-
 /**
  * a custom hook for sending focus to the primary content container
  * after a view has loaded so that subsequent press of tab key
  * sends focus directly to relevant content
  */
-export const useA11yRouteChange = () => {
-  const id = useA11yRouteContainerId();
+export const useA11yRouteChange = (id = 'main-container') => {
   const lastNavigation = useLastLocation();
   const previousNavigation = React.useRef<LastLocationType | null>();
   React.useEffect(() => {
@@ -39,11 +32,4 @@ export const useA11yRouteChange = () => {
       }
     };
   }, [id, lastNavigation, previousNavigation]);
-};
-
-export const useA11yRouteContainer = () => {
-  useA11yRouteChange();
-  const id = useA11yRouteContainerId();
-  const tabIndex = -1;
-  return { id, tabIndex };
 };

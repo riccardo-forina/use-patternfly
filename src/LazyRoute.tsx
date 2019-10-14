@@ -7,7 +7,9 @@ export interface IDynamicImportProps extends RouteProps {
 }
 
 export function LazyRoute({ getComponent, ...props }: IDynamicImportProps) {
-  const LazyComponent = React.lazy(getComponent);
+  const LazyComponent = React.useMemo(() => React.lazy(getComponent), [
+    getComponent,
+  ]);
   return (
     <Route {...props}>
       <React.Suspense fallback={<Loading />}>

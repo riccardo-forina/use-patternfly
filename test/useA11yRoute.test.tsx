@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import { waitForElement } from '@testing-library/dom';
 import { render, fireEvent } from '@test/setup';
-import { useA11yRouteContainer } from '@src';
+import { useA11yRouteChange } from '@src';
 
 const SamplePage = () => {
-  const a11yContainerProps = useA11yRouteContainer();
+  useA11yRouteChange('test-focus');
   const [focused, setFocused] = React.useState(false);
   const handleFocus = () => {
     setFocused(true);
   };
   return (
-    <div {...a11yContainerProps} onFocus={handleFocus}>
+    <div id={'test-focus'} tabIndex={-1} onFocus={handleFocus}>
       {focused ? (
         <div data-testid={'test-focused'}>I'm focused!</div>
       ) : (
