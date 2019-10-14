@@ -28,6 +28,7 @@ function makeAppLayout(
       navGroupsStyle: 'expandable',
       startWithOpenNav: true,
       theme: 'dark',
+      mainContainerId: 'test-main-container',
       children: <div data-testid={'test-content'}>test</div>,
     },
     props
@@ -41,12 +42,13 @@ function renderAppLayout(...args: Parameters<typeof makeAppLayout>) {
 
 describe('AppLayout tests', () => {
   test('should render as configured', async () => {
-    const { getByTestId, getByText } = renderAppLayout();
+    const { getByTestId, getByText, container } = renderAppLayout();
     getByTestId('test-content');
     getByText('App logo');
     getByText('Avatar');
     getByText('Toolbar');
     getByTestId('app-sidebar');
+    expect(container.querySelector('#test-main-container')).not.toBeNull();
   });
 
   it('should render a nav-toggle button', async () => {
