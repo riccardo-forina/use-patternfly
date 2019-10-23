@@ -4,9 +4,11 @@ import { css, StyleSheet } from '@patternfly/react-styles';
 const styles = StyleSheet.create({
   keyword: {
     display: 'inline-block',
-    backgroundColor: `var(--pf-global--BackgroundColor--light-200)`,
+    color: `var(--pf-global--Color--light-100)`,
+    backgroundColor: `var(--pf-global--BackgroundColor--dark-400)`,
     fontFamily: 'monospace',
-    padding: '3px',
+    fontSize: '1.2rem',
+    padding: '0.2em 0.5em',
     borderRadius: '3px',
   },
 });

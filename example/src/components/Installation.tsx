@@ -46,7 +46,7 @@ export const Installation: React.FunctionComponent = ({ children }) => {
         </TextList>
         <Text>
           Please make sure to install them as well. You'll need{' '}
-          <Keyword>react@16.8.0</Keyword>
+          <Keyword>react@16.8.0</Keyword>{' '}
           or later since the package uses hooks.
         </Text>
         <Text>
@@ -59,7 +59,7 @@ export const Installation: React.FunctionComponent = ({ children }) => {
           breakpointMods={[{ modifier: 'align-right', breakpoint: 'sm' }]}
         >
           <Link to={'/getting-started/usage'}>
-            <Button component={'div'}>Usage</Button>
+            <Button component={'div'}>Next: Usage</Button>
           </Link>
         </FlexItem>
       </Flex>

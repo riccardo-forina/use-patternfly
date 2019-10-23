@@ -92,6 +92,8 @@
     }
   },
   "dependencies": {
+    "@types/react-syntax-highlighter": "^11.0.1",
+    "react-syntax-highlighter": "^11.0.2",
     "remove": "^0.1.5"
   },
   "eslintConfig": {

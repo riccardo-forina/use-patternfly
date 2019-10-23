@@ -90,7 +90,7 @@ export const Overview: React.FunctionComponent = ({ children }) => {
             breakpointMods={[{ modifier: 'align-right', breakpoint: 'sm' }]}
           >
             <Link to={'/getting-started/installation'}>
-              <Button as={'div'}>Installation</Button>
+              <Button as={'div'}>Next: Installation</Button>
             </Link>
           </FlexItem>
         </Flex>

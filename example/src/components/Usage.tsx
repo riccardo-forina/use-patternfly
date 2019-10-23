@@ -9,8 +9,9 @@ import {
 } from '@patternfly/react-core';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CodeSample } from '.';
 
-export const Usage: React.FunctionComponent = ({ children }) => {
+export const Usage: React.FunctionComponent = () => {
   return (
     <PageSection>
       <TextContent>
@@ -19,27 +20,9 @@ export const Usage: React.FunctionComponent = ({ children }) => {
           Import the component or hook that you need using the object
           destructuring syntax:
         </Text>
-      </TextContent>
 
-      <iframe
-        style={{ height: 565, width: '100%', margin: '20px 0' }}
-        scrolling={'no'}
-        title="use-patternfly-usage-example"
-        src="https://codepen.io/riccardo-forina/embed/oNNjjqv?height=265&theme-id=0&default-tab=js"
-        frameBorder="no"
-        allowFullScreen={true}
-      >
-        See the Pen{' '}
-        <a href="https://codepen.io/riccardo-forina/pen/oNNjjqv">
-          use-patternfly-usage-example
-        </a>{' '}
-        by Riccardo Forina (
-        <a href="https://codepen.io/riccardo-forina">@riccardo-forina</a>) on{' '}
-        <a href="https://codepen.io">CodePen</a>.
-      </iframe>
-
-      <TextContent>
         <Text>
+          Here is a simple application you can use to get you started.
           Another source of usage examples is{' '}
           <a
             href={
@@ -52,12 +35,64 @@ export const Usage: React.FunctionComponent = ({ children }) => {
         </Text>
       </TextContent>
 
+      <CodeSample>
+{`import React from 'react';
+import ReactDOM from 'react-dom';
+
+// PatternFly styling
+import '@patternfly/react-core/dist/styles/base.css';
+
+// peer dependencies
+import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
+import { LastLocationProvider } from 'react-router-last-location';
+
+// use-patternfly
+import { AppLayout, SwitchWith404 } from 'use-patternfly';
+
+const App = () => {
+  const history = useHistory();
+  return (
+    <AppLayout
+      logo={'example app'}
+      logoProps={{
+        onClick: () => history.push('/')
+      }}
+      navItems={[
+        {
+          title: 'Dashboard',
+          to: '/',
+          exact: true
+        }
+      ]}
+      navVariant={"vertical"}
+    >
+      <SwitchWith404>
+        <Route path='/' exact={true}>
+          Hello world!
+        </Route>
+      </SwitchWith404>
+    </AppLayout>
+  );
+};
+
+
+ReactDOM.render(
+  <Router>
+    <LastLocationProvider>
+      <App />
+    </LastLocationProvider>
+  </Router>,
+  document.getElementById('root')
+);
+`}
+      </CodeSample>
+
       <Flex>
         <FlexItem
           breakpointMods={[{ modifier: 'align-right', breakpoint: 'sm' }]}
         >
           <Link to={'/api'}>
-            <Button component={'div'}>API</Button>
+            <Button component={'div'}>Next: the API</Button>
           </Link>
         </FlexItem>
       </Flex>
