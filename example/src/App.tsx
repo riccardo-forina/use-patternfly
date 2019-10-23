@@ -58,9 +58,9 @@ const navItems = [
 const getOverviewPage = () => import('./pages/OverviewPage');
 const getInstallationPage = () => import('./pages/InstallationPage');
 const getUsagePage = () => import('./pages/UsagePage');
+const getApiAppLayoutPage = () => import('./pages/ApiAppLayout');
 const getAsyncDataListRest = () => import('./pages/AsyncDataListRestPage');
-const getAsyncDataListGraphQL = () =>
-  import('./pages/AsyncDataListGraphQLPage');
+const getAsyncDataListGraphQL = () => import('./pages/AsyncDataListGraphQLPage');
 
 export const App = () => {
   const history = useHistory();
@@ -88,6 +88,10 @@ export const App = () => {
         <LazyRoute
           path="/getting-started/installation"
           getComponent={getInstallationPage}
+        />
+        <LazyRoute
+          path="/api/AppLayout"
+          getComponent={getApiAppLayoutPage}
         />
         <LazyRoute path="/getting-started/usage" getComponent={getUsagePage} />
         <Redirect path="/api" to={'/api/AppLayout'} exact={true} />
