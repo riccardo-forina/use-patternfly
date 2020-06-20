@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Nav,
   NavList,
-  NavVariants,
   Page,
   PageHeader,
   PageSidebar,
@@ -23,8 +22,7 @@ export const AppLayoutContext = React.createContext<IAppLayoutContext>({
 export interface IAppLayoutProps
   extends Pick<PageHeaderProps, 'logo'>,
     Pick<PageHeaderProps, 'logoProps'>,
-    Pick<PageHeaderProps, 'avatar'>,
-    Pick<PageHeaderProps, 'toolbar'> {
+    Pick<PageHeaderProps, 'headerTools'> {
   navVariant?: 'vertical' | 'horizontal';
   navItems?: Array<
     IAppNavItemProps | IAppNavExpandableProps | IAppNavGroupProps | undefined
@@ -35,14 +33,19 @@ export interface IAppLayoutProps
   mainContainerId?: string;
 }
 
+export enum NavVariants{
+  default = 'default',
+  horizontal = 'horizontal',
+  tertiary = 'tertiary',
+}
+
 export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
   logo,
   logoProps,
   navVariant = 'horizontal',
   navItems = [],
   navGroupsStyle = 'grouped',
-  toolbar,
-  avatar,
+  headerTools,
   startWithOpenNav = true,
   theme = 'dark',
   mainContainerId = 'main-container',
@@ -88,8 +91,8 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
   const Navigation = React.useMemo(
     () =>
       navItems.length > 0 ? (
-        <Nav id="nav-primary-simple" theme={theme}>
-          <NavList id="nav-list-simple" variant={variant}>
+        <Nav id="nav-primary-simple" theme={theme} variant={variant}>
+          <NavList id="nav-list-simple">
             {navItems.map((navItem, idx) => {
               if (navItem && navItem.hasOwnProperty('items') && isVertical) {
                 return navGroupsStyle === 'expandable' ? (
@@ -116,9 +119,8 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
     () => (
       <PageHeader
         logo={logo}
-        logoProps={logoProps}
-        avatar={avatar}
-        toolbar={toolbar}
+        logoProps={logoProps}       
+        headerTools={headerTools}
         showNavToggle={isVertical}
         isNavOpen={isVertical ? isNavOpen : undefined}
         onNavToggle={isMobileView ? onNavToggleMobile : onNavToggle}
@@ -127,15 +129,14 @@ export const AppLayout: React.FunctionComponent<IAppLayoutProps> = ({
     ),
     [
       logo,
-      logoProps,
-      avatar,
-      toolbar,
+      logoProps, 
       isVertical,
       isNavOpen,
       isMobileView,
       onNavToggle,
       onNavToggleMobile,
       Navigation,
+      headerTools,
     ]
   );
 
