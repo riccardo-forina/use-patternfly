@@ -81,7 +81,7 @@ export const StarWarsPeople: React.FunctionComponent<IStarWarsPeopleProps> = ({
                       </DataListCell>,
                       <DataListCell key="name">
                         <TextContent>
-                          <Title size={'lg'} headingLevel={'h2'}>
+                          <Title size="lg" headingLevel={'h2'}>
                             {person.name}
                           </Title>
                           <Text>

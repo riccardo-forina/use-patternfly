@@ -14,7 +14,7 @@ export const Usage: React.FunctionComponent = ({ children }) => {
   return (
     <PageSection>
       <TextContent>
-        <Title size={'3xl'}>Usage</Title>
+        <Title headingLevel="h2" size="xl">Usage</Title>
         <Text>
           Import the component or hook that you need using the object
           destructuring syntax:
@@ -54,7 +54,7 @@ export const Usage: React.FunctionComponent = ({ children }) => {
 
       <Flex>
         <FlexItem
-          breakpointMods={[{ modifier: 'align-right', breakpoint: 'sm' }]}
+          align={{"sm":"alignRight"}} 
         >
           <Link to={'/api'}>
             <Button component={'div'}>API</Button>

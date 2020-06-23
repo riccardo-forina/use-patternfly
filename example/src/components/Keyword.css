@@ -1,0 +1,7 @@
+.keyword {
+  display: inline-block;
+  background-color: var(--pf-global--BackgroundColor--light-200);
+  font-family: monospace;
+  padding: 3px;
+  border-radius: 3px;
+}

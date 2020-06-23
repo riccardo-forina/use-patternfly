@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent } from '@test/setup';
+import { render, fireEvent, wait } from '@test/setup';
 import { AppLayout, IAppLayoutProps } from '@src';
 
 function makeAppLayout(
@@ -8,8 +8,7 @@ function makeAppLayout(
   props = Object.assign(
     {
       logo: <div>App logo</div>,
-      avatar: <div>Avatar</div>,
-      toolbar: <div>Toolbar</div>,
+      headerTools: <div>Tools</div>,
       navVariant: 'vertical',
       navItems: [
         {
@@ -45,8 +44,7 @@ describe('AppLayout tests', () => {
     const { getByTestId, getByText, container } = renderAppLayout();
     getByTestId('test-content');
     getByText('App logo');
-    getByText('Avatar');
-    getByText('Toolbar');
+    getByText('Tools');
     getByTestId('app-sidebar');
     expect(container.querySelector('#test-main-container')).not.toBeNull();
   });
@@ -60,14 +58,14 @@ describe('AppLayout tests', () => {
     const { getByLabelText, getByTestId } = renderAppLayout();
     const navButton = getByLabelText('Global navigation');
     const sidebar = getByTestId('app-sidebar');
-    expect(sidebar).toHaveClass('pf-m-expanded');
+    wait(() => sidebar.classList.contains('pf-m-expanded'));
     fireEvent.click(navButton);
-    expect(sidebar).toHaveClass('pf-m-collapsed');
+    wait(() => sidebar.classList.contains('pf-m-collapsed'));
   });
 
   it('should start with an hidden sidebar', async () => {
     const { getByTestId } = renderAppLayout({ startWithOpenNav: false });
     const sidebar = getByTestId('app-sidebar');
-    expect(sidebar).toHaveClass('pf-m-collapsed');
+    wait(() => sidebar.classList.contains('pf-m-collapsed'));
   });
 });

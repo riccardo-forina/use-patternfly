@@ -49,7 +49,7 @@ export default function AsyncDataListRestPage() {
   );
 
   const { data, isPending } = useFetch<IStarWarsPeopleResponse>(
-    `https://swapi.co/api/people/?page=${page}`,
+    `https://swapi.dev/api/people/?page=${page}`,
     { headers: { Accept: 'application/json' } }
   );
 

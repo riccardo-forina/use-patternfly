@@ -5,7 +5,7 @@ import { ExampleLink } from './ExampleLink';
 export const AsyncDataListGraphQLHeader: React.FunctionComponent = () => (
   <PageSection variant={'light'}>
     <TextContent>
-      <Title size={'3xl'} headingLevel={'h1'}>
+      <Title size="xl" headingLevel={'h1'}>
         Async Data List (GraphQL)
       </Title>
       <Text>
