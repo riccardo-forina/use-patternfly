@@ -5,7 +5,7 @@ import { ExampleLink } from './ExampleLink';
 export const AsyncDataListRestHeader: React.FunctionComponent = () => (
   <PageSection variant={'light'}>
     <TextContent>
-      <Title size={'3xl'} headingLevel={'h1'}>
+      <Title size="xl" headingLevel={'h1'}>
         Async Data List (REST)
       </Title>
       <Text>

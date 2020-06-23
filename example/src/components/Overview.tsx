@@ -39,7 +39,7 @@ export const Overview: React.FunctionComponent = ({ children }) => {
       </PageSection>
       <PageSection>
         <TextContent>
-          <Title size={'3xl'}>Overview</Title>
+          <Title headingLevel="h2" size="xl">Overview</Title>
           <Text>
             <Keyword>use-patternfly</Keyword> is an opinionated set of hooks and
             components useful when building a React app with{' '}
@@ -51,7 +51,7 @@ export const Overview: React.FunctionComponent = ({ children }) => {
             from an API and showing the data in a DataList or Table component.
           </Text>
 
-          <Title size={'xl'} headingLevel={'h2'}>
+          <Title size="xl" headingLevel={'h2'}>
             Motivation
           </Title>
           <Text>
@@ -70,7 +70,7 @@ export const Overview: React.FunctionComponent = ({ children }) => {
             again.
           </Text>
 
-          <Title size={'xl'} headingLevel={'h2'}>
+          <Title size="xl" headingLevel={'h2'}>
             Dependencies
           </Title>
           <Text>
@@ -87,7 +87,7 @@ export const Overview: React.FunctionComponent = ({ children }) => {
 
         <Flex>
           <FlexItem
-            breakpointMods={[{ modifier: 'align-right', breakpoint: 'sm' }]}
+            align={{"sm":"alignRight"}} 
           >
             <Link to={'/getting-started/installation'}>
               <Button as={'div'}>Installation</Button>

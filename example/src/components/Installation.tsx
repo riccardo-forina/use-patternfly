@@ -17,7 +17,7 @@ export const Installation: React.FunctionComponent = ({ children }) => {
   return (
     <PageSection>
       <TextContent>
-        <Title size={'3xl'}>Installation</Title>
+        <Title size="xl" headingLevel={"h1"}>Installation</Title>
         <Text>
           You can install <Keyword>use-patternfly</Keyword> from npm:
         </Text>
@@ -56,7 +56,7 @@ export const Installation: React.FunctionComponent = ({ children }) => {
       </TextContent>
       <Flex>
         <FlexItem
-          breakpointMods={[{ modifier: 'align-right', breakpoint: 'sm' }]}
+          align={{sm: "alignRight"}}
         >
           <Link to={'/getting-started/usage'}>
             <Button component={'div'}>Usage</Button>

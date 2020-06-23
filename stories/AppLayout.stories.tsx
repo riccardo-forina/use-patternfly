@@ -12,9 +12,9 @@ import { BellIcon, CogIcon } from '@patternfly/react-icons';
 import { AppLayout } from '../src/AppLayout';
 import {
   PageSection,
-  Toolbar,
-  ToolbarGroup,
-  ToolbarItem,
+  PageHeaderTools,
+  PageHeaderToolsGroup,
+  PageHeaderToolsItem,
   Button,
   ButtonVariant,
   Dropdown,
@@ -28,15 +28,15 @@ import { useBreadcrumb } from '../src';
 const stories = storiesOf('Utils', module);
 stories.addDecorator(withKnobs);
 
-const PageToolbar = (
-  <Toolbar>
-    <ToolbarGroup
+const SamplePageHeadersTools = (
+  <PageHeaderTools>
+    <PageHeaderToolsGroup
       className={css(
         accessibleStyles.screenReader,
         accessibleStyles.visibleOnLg
       )}
     >
-      <ToolbarItem>
+      <PageHeaderToolsItem>
         <Button
           id="groups-example-uid-01"
           aria-label="Notifications actions"
@@ -44,8 +44,8 @@ const PageToolbar = (
         >
           <BellIcon />
         </Button>
-      </ToolbarItem>
-      <ToolbarItem>
+      </PageHeaderToolsItem>
+      <PageHeaderToolsItem>
         <Button
           id="groups-example-uid-02"
           aria-label="Setings actions"
@@ -53,10 +53,10 @@ const PageToolbar = (
         >
           <CogIcon />
         </Button>
-      </ToolbarItem>
-    </ToolbarGroup>
-    <ToolbarGroup>
-      <ToolbarItem
+      </PageHeaderToolsItem>
+    </PageHeaderToolsGroup>
+    <PageHeaderToolsGroup>
+      <PageHeaderToolsItem
         className={css(accessibleStyles.hiddenOnLg, spacingStyles.mr_0)}
       >
         <Dropdown
@@ -67,8 +67,8 @@ const PageToolbar = (
           isOpen={false}
           dropdownItems={[]}
         />
-      </ToolbarItem>
-      <ToolbarItem
+      </PageHeaderToolsItem>
+      <PageHeaderToolsItem
         className={css(
           accessibleStyles.screenReader,
           accessibleStyles.visibleOnMd
@@ -86,9 +86,9 @@ const PageToolbar = (
           }
           dropdownItems={[]}
         />
-      </ToolbarItem>
-    </ToolbarGroup>
-  </Toolbar>
+      </PageHeaderToolsItem>
+    </PageHeaderToolsGroup>
+  </PageHeaderTools>
 );
 
 const SampleBreadcrumb = (
@@ -137,8 +137,7 @@ stories.add('AppLayout', () => (
       logoProps={{
         onClick: action('Logo clicked'),
       }}
-      avatar={text('Avatar', '👱')}
-      toolbar={boolean('With sample toolbar', true) && PageToolbar}
+      headerTools={boolean('With sample header tools', true) && SamplePageHeadersTools}
       navVariant={
         select('Navigation style', navigationStyles, 'vertical') as
           | 'vertical'
